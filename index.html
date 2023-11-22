@@ -28,7 +28,7 @@
 
         <h1 class="mb-5">Calcola il prezzo del tuo biglietto</h1>
 
-        <form class="row g-3">
+        <form class="mb-3">
             <div class="form-floating mb-3 col-6">
                 <input type="text" class="form-control" id="userName" placeholder="Nome">
                 <label for="floatingInput">Nome</label>
@@ -37,30 +37,31 @@
                 <input type="text" class="form-control" id="userLastName" placeholder="Cognome">
                 <label for="floatingInput">Cognome</label>
             </div>
-            <select class="form-floating py-3 mb-3 col-4" id="userGender">
-                <option selected>Sesso</option>
-                <option value="1">Maschio</option>
-                <option value="2">Femmina</option>
-                <option value="3">Indeciso</option>
+            <select class="form-floating py-3 mb-3 col-6" id="userGender">
+                <option value="M" selected>Maschio</option>
+                <option value="F">Femmina</option>
+                <option value="N">Indeciso</option>
             </select>
-            <div class="form-floating mb-3 col-4">
-                <input type="text" class="form-control" id="userKm" placeholder="Km">
+            <div class="form-floating mb-3 col-6">
+                <input type="number" min="0" max="130" class="form-control" id="userKm" placeholder="Km">
                 <label for="floatingInput">Km da percorrere</label>
             </div>
-            <div class="form-floating mb-3 col-4">
-                <input type="text" class="form-control" id="userAge" placeholder="Età">
+            <div class="form-floating mb-3 col-6">
+                <input type="number" min="1" class="form-control" id="userAge" placeholder="Età">
                 <label for="floatingInput">Età</label>
             </div>
-            <button type="submit" class="btn btn-primary">Calcola</button>
+            <button id='submit' type="button" class="btn btn-primary">Genera biglietto</button>
         </form>
         <!-- /Form -->
 
-        <div class="card d-none">
-            <div id="ticketName"></div>
-            <div id="ticketLastName"></div>
-            <div id="ticketGender"></div>
-            <div id="ticketKm"></div>
-            <div id="ticketAge"></div>
+        <div class="card bg-primary text-primary d-none p-5">
+            <div class="row g-3">
+                <div id="ticketName" class="bg-light col-6"></div>
+                <div id="ticketLastName" class="bg-light col-6"></div>
+                <div id="ticketGender" class="bg-light col-4"></div>
+                <div id="ticketKm" class="bg-light col-4"></div>
+                <div id="ticketAge" class="bg-light col-4"></div>
+            </div>
         </div>
         <!-- /Ticket -->
 

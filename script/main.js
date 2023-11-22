@@ -18,3 +18,25 @@ Seguite le milestone in ordine, non lavorate alla milestone due se prima non ave
 Mi raccomando altrimenti sará tutto piú complicato. Procedete in ordine.
 */
 
+//STEP1 Inserimento AddEventListener su bottone per leggere input dati
+document.getElementById('submit').addEventListener('click', function () {
+
+    //STEP2 Creazione variabili per raccolta input + console.log per check
+    const userName = document.getElementById('userName').value;
+    const userLastName = document.getElementById('userLastName').value;
+    const userGender = document.getElementById('userGender').value;
+    const userKm = document.getElementById('userKm').value;
+    const userAge = document.getElementById('userAge').value;
+    console.log(userName, userLastName, userGender, userKm, userAge);
+
+    //STEP3 Assegnazione valori variabili a elementi biglietto
+    document.getElementById('ticketName').innerHTML = userName;
+    document.getElementById('ticketLastName').innerHTML = userLastName;
+    document.getElementById('ticketGender').innerHTML = userGender;
+    document.getElementById('ticketKm').innerHTML = userKm;
+    document.getElementById('ticketAge').innerHTML = userAge;
+
+    //STEP4 Visualizzazione biglietto
+    document.querySelector('.card').classList.remove('d-none');
+
+})
