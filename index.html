@@ -28,50 +28,168 @@
 
         <h1 class="mb-5">Calcola il prezzo del tuo biglietto</h1>
 
-        <form class="mb-3">
-            <div class="form-floating mb-3 col-6">
-                <input type="text" class="form-control" id="userName" placeholder="Nome">
-                <label for="floatingInput">Nome</label>
-            </div>
-            <div class="form-floating mb-3 col-6">
-                <input type="text" class="form-control" id="userLastName" placeholder="Cognome">
-                <label for="floatingInput">Cognome</label>
-            </div>
-            <select class="form-floating py-3 mb-3 col-6" id="userGender">
-                <option value="M" selected>Maschio</option>
-                <option value="F">Femmina</option>
-                <option value="N">Indeciso</option>
-            </select>
-            <div class="form-floating mb-3 col-6">
-                <input type="number" min="0" max="130" class="form-control" id="userKm" placeholder="Km">
-                <label for="floatingInput">Km da percorrere</label>
-            </div>
-            <div class="form-floating mb-3 col-6">
-                <input type="number" min="1" class="form-control" id="userAge" placeholder="Età">
-                <label for="floatingInput">Età</label>
-            </div>
-            <button id='submit' type="button" class="btn btn-primary">Genera biglietto</button>
-        </form>
-        <!-- /Form -->
+        <form class="row g-3 needs-validation" novalidate>
 
-        <div class="card bg-primary text-primary d-none p-5">
+            <div class="form-floating col-md-4 position-relative mb-3">
+                <input type="text" class="form-control" id="userName" placeholder="Nome" required>
+                <label for="userName" class="form-label l-8px">Nome</label>
+                <div class="valid-tooltip">
+                    OK!
+                </div>
+                <div class="invalid-tooltip">
+                    Inserire un nome
+                </div>
+            </div>
+            <!-- userName -->
+
+            <div class="form-floating col-md-4 position-relative mb-3">
+                <input type=" text" class="form-control" id="userLastName" placeholder="Cognome" required>
+                <label for="userLastName" class="form-label l-8px">Cognome</label>
+                <div class="valid-tooltip">
+                    OK!
+                </div>
+                <div class="valid-tooltip">
+                    OK!
+                </div>
+                <div class="invalid-tooltip">
+                    Inserire un cognome
+                </div>
+            </div>
+            <!-- userLastName -->
+
+            <div class="form-floating col-md-3 position-relative left- mb-3">
+                <select class="form-select" id="userGender" required>
+                    <option selected disabled value="">Sesso</option>
+                    <option value="M">Maschio</option>
+                    <option value="F">Femmina</option>
+                    <option value="I">Indeciso</option>
+                </select>
+                <label for="userGender" class="form-label l-8px">Sesso</label>
+                <div class="valid-tooltip">
+                    OK!
+                </div>
+                <div class="invalid-tooltip">
+                    Inserire il proprio sesso
+                </div>
+            </div>
+            <!-- userGender -->
+
+            <div class="form-floating col-md-4 position-relative mb-3">
+                <input type="number" class="form-control" id="userAge" placeholder="Età" required>
+                <label for="userAge" class="form-label l-8px" min="0" max="130">Età</label>
+                <div class="valid-tooltip">
+                    OK!
+                </div>
+                <div class="invalid-tooltip">
+                    Inserire un valore per l'età
+                </div>
+            </div>
+            <!-- userAge -->
+
+            <div class="form-floating col-md-4 position-relative mb-3">
+                <input type="number" class="form-control" id="userKm" placeholder="Km da percorrere" required>
+                <label for="userKm" class="form-label l-8px" min="1">Km da percorrere</label>
+                <div class="valid-tooltip">
+                    OK!
+                </div>
+                <div class="invalid-tooltip">
+                    Inserire un valore per i km da percorrere
+                </div>
+            </div>
+            <!-- userKm -->
+
+            <div class="col-12 my-5">
+                <button id="btnSubmit" class="btn btn-primary" type="button">Genera biglietto</button>
+            </div>
+            <!-- Submit button -->
+        </form>
+
+        <div class="card text-primary p-5 d-none">
             <div class="row g-3">
-                <div id="ticketName" class="bg-light col-6"></div>
-                <div id="ticketLastName" class="bg-light col-6"></div>
-                <div id="ticketGender" class="bg-light col-4"></div>
-                <div id="ticketKm" class="bg-light col-4"></div>
-                <div id="ticketAge" class="bg-light col-4"></div>
+
+                <div class="form-floating col-md-4 position-relative mb-3">
+                    <input type="text" class="form-control font-weight-bold" id="ticketName" placeholder="Nome"
+                        value="Nome" disabled>
+                    <label for="ticketName" class="form-label l-8px">Nome</label>
+                </div>
+                <!-- ticketName -->
+
+                <div class="form-floating col-md-4 position-relative mb-3">
+                    <input type="text" class="form-control font-weight-bold" id="ticketLastName" placeholder="Cognome"
+                        value="Cognome" disabled>
+                    <label for="ticketLastName" class="form-label l-8px">Cognome</label>
+                </div>
+                <!-- ticketLastName -->
+
+                <div class="form-floating col-md-4 position-relative mb-3">
+                    <input type="text" class="form-control font-weight-bold" id="ticketGender" placeholder="Sesso"
+                        value="Sesso" disabled>
+                    <label for="ticketGender" class="form-label l-8px">Sesso</label>
+                </div>
+                <!-- ticketGender -->
+
+                <div class="form-floating col-md-4 position-relative mb-3">
+                    <input type="text" class="form-control font-weight-bold" id="ticketAge" placeholder="Età"
+                        value="Età" disabled>
+                    <label for="ticketAge" class="form-label l-8px">Età</label>
+                </div>
+                <!-- ticketAge -->
+
+                <div class="form-floating col-md-4 position-relative mb-3">
+                    <input type="text" class="form-control font-weight-bold" id="ticketKm" placeholder="Valido per Km"
+                        value="Valido per Km" disabled>
+                    <label for="ticketKm" class="form-label l-8px">Valido per Km</label>
+                </div>
+                <!-- ticketKm -->
+
+                <div class="form-floating col-md-4 position-relative mb-3">
+                    <input type="text" class="form-control font-weight-bold" id="ticketDiscount" placeholder="Sconto %"
+                        value="Sconto %" disabled>
+                    <label for="ticketDiscount" class="form-label l-8px">Sconto %</label>
+                </div>
+                <!-- ticketDiscount -->
+
+                <div class="form-floating col-md-4 position-relative mb-3">
+                    <input type="text" class="form-control font-weight-bold" id="ticketPrice" placeholder="Prezzo"
+                        value="Prezzo €" disabled>
+                    <label for="ticketPrice" class="form-label l-8px">Prezzo €</label>
+                </div>
+                <!-- ticketPrice -->
+
             </div>
         </div>
         <!-- /Ticket -->
 
     </div>
 
-
     <!-- Import Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+    <!-- Import Bootstrap JS check input validation -->
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
 
     <!-- Import Custom JS -->
     <script src="./script/main.js"></script>

@@ -19,24 +19,81 @@ Mi raccomando altrimenti sará tutto piú complicato. Procedete in ordine.
 */
 
 //STEP1 Inserimento AddEventListener su bottone per leggere input dati
-document.getElementById('submit').addEventListener('click', function () {
+document.getElementById('btnSubmit').addEventListener('click', function () {
 
     //STEP2 Creazione variabili per raccolta input + console.log per check
     const userName = document.getElementById('userName').value;
     const userLastName = document.getElementById('userLastName').value;
     const userGender = document.getElementById('userGender').value;
-    const userKm = document.getElementById('userKm').value;
     const userAge = document.getElementById('userAge').value;
-    console.log(userName, userLastName, userGender, userKm, userAge);
+    const userKm = document.getElementById('userKm').value;
+    console.log(userName, userLastName, userGender, userAge, userKm);
 
     //STEP3 Assegnazione valori variabili a elementi biglietto
     document.getElementById('ticketName').innerHTML = userName;
     document.getElementById('ticketLastName').innerHTML = userLastName;
     document.getElementById('ticketGender').innerHTML = userGender;
-    document.getElementById('ticketKm').innerHTML = userKm;
     document.getElementById('ticketAge').innerHTML = userAge;
+    document.getElementById('ticketKm').innerHTML = userKm;
 
     //STEP4 Visualizzazione biglietto
-    document.querySelector('.card').classList.remove('d-none');
+
+    // Se tutti i dati sono compilati
+    if (userName != '' && userLastName != '' && userGender != '' && userAge != '' && userKm != '') {
+
+        // Allora visualizzo il biglietto
+        document.querySelector('.card').classList.remove('d-none');
+
+        // Calcolo lo sconto
+        let ticketDiscount;
+
+        if (userAge < 18) {
+
+            ticketDiscount = 20;
+
+        } else if (userAge > 65) {
+
+            ticketDiscount = 40;
+
+        } else {
+
+            ticketDiscount = 0;
+
+        }
+
+        // Calcolo il prezzo del biglietto
+        ticketPrice = (0.21 * userKm * (1 - (ticketDiscount / 100))).toFixed(2);
+
+        // Popolo i campi del biglietto
+        document.getElementById('ticketName').value = userName;
+        document.getElementById('ticketLastName').value = userLastName;
+        document.getElementById('ticketGender').value = userGender;
+        document.getElementById('ticketAge').value = userAge
+        document.getElementById('ticketKm').value = userKm;
+        document.getElementById('ticketDiscount').value = ticketDiscount;
+        document.getElementById('ticketPrice').value = ticketPrice;
+
+        // Assegno colore sfondo in base al sesso
+        if (userGender == 'M') {
+
+            document.querySelector('.card').classList.add('bg-primary');
+            document.querySelector('.card').classList.remove('bg-danger');
+            document.querySelector('.card').classList.remove('bg-warning');
+
+        } else if (userGender == 'F') {
+
+            document.querySelector('.card').classList.add('bg-danger');
+            document.querySelector('.card').classList.remove('bg-primary');
+            document.querySelector('.card').classList.remove('bg-warning');
+
+        } else {
+
+            document.querySelector('.card').classList.add('bg-warning');
+            document.querySelector('.card').classList.remove('bg-primary');
+            document.querySelector('.card').classList.remove('bg-danger');
+
+        }
+
+    }
 
 })
