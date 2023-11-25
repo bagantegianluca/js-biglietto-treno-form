@@ -19,7 +19,10 @@ Mi raccomando altrimenti sará tutto piú complicato. Procedete in ordine.
 */
 
 //STEP1 Inserimento AddEventListener su bottone per leggere input dati
-document.getElementById('btnSubmit').addEventListener('click', function () {
+document.querySelector('form').addEventListener('submit', function (e) {
+
+    // Prevenire refresh pagina
+    e.preventDefault();
 
     //STEP2 Creazione variabili per raccolta input + console.log per check
     const userName = document.getElementById('userName').value;
@@ -61,8 +64,11 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
 
         }
 
+        // Creazione variabile prezzo/km
+        const priceKm = 0.21;
+
         // Calcolo il prezzo del biglietto
-        ticketPrice = (0.21 * userKm * (1 - (ticketDiscount / 100))).toFixed(2);
+        ticketPrice = (priceKm * userKm * (1 - (ticketDiscount / 100))).toFixed(2);
 
         // Popolo i campi del biglietto
         document.getElementById('ticketName').value = userName;
@@ -72,6 +78,26 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
         document.getElementById('ticketKm').value = userKm;
         document.getElementById('ticketDiscount').value = ticketDiscount;
         document.getElementById('ticketPrice').value = ticketPrice;
+
+        // Visualizzo pulsante modifica
+        document.getElementById('btnModify').classList.remove('d-none');
+
+        document.getElementById('btnModify').addEventListener('click', function () {
+
+            document.getElementById('userName').value = userName;
+            document.getElementById('userLastName').value = userLastName;
+            document.getElementById('userGender').value = userGender;
+            document.getElementById('userAge').value = userAge;
+            document.getElementById('userKm').value = userKm;
+
+        })
+
+        // Svuoto campi input
+        document.getElementById('userName').value = '';
+        document.getElementById('userLastName').value = '';
+        document.getElementById('userGender').value = '';
+        document.getElementById('userAge').value = '';
+        document.getElementById('userKm').value = '';
 
         // Assegno colore sfondo in base al sesso
         if (userGender == 'M') {

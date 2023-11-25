@@ -1,3 +1,11 @@
 .form-floating>label.l-8px {
     left: 8px;
 }
+
+input[id*='ticket'] {
+    font-weight: bold;
+}
+
+#ticketDiscount {
+    color: red;
+}
